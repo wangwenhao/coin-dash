@@ -13,8 +13,13 @@ func pickup():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimatedSprite2D.play()
+	$Timer.wait_time = randi_range(3, 8)
+	$Timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func _on_timer_timeout() -> void:
+	$AnimatedSprite2D.frame = 0
+	$AnimatedSprite2D.play()
