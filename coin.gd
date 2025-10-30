@@ -1,6 +1,6 @@
 extends Area2D
 
-var sizescreen
+var screensize
 
 func pickup():
 	#monitoring = false
@@ -23,3 +23,8 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	$AnimatedSprite2D.frame = 0
 	$AnimatedSprite2D.play()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("obstacles"):
+		position = Vector2(randf_range(0, screensize.x), randf_range(0, screensize.y))

@@ -44,6 +44,7 @@ func spawn_coins():
 	for i in range(4 + level):
 		var coin = Coin.instantiate()
 		$CoinContainer.add_child(coin)
+		coin.screensize = screensize
 		coin.position = Vector2(randi_range(0, screensize.x), randi_range(0, screensize.y))
 
 
@@ -82,4 +83,5 @@ func game_over():
 func _on_powerup_timer_timeout() -> void:
 	var powerup = Powerup.instantiate()
 	add_child(powerup)
+	powerup.screensize = screensize
 	powerup.position = Vector2(randi_range(0, screensize.x), randi_range(0, screensize.y))

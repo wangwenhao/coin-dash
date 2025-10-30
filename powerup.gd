@@ -1,6 +1,6 @@
 extends Area2D
 
-var sizescreen
+var screensize
 
 func pickup():
 	var tween = get_tree().create_tween()
@@ -21,3 +21,8 @@ func _process(delta: float) -> void:
 
 func _on_life_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("obstacles"):
+		position = Vector2(randf_range(0, screensize.x), randf_range(0, screensize.y))
